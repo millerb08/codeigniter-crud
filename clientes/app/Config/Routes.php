@@ -36,6 +36,7 @@ $routes->get('/eliminar/(:any)', 'Crud::eliminar/$1');
 $routes->post('/crear', 'Crud::crear');
 $routes->post('/actualizar', 'Crud::actualizar');
 $routes->get('/crear-cliente', 'Crud::crearCliente');
+$routes->get('/graficas', 'Crud::graficas');
 
 
 

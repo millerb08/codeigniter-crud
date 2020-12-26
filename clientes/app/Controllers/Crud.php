@@ -4,8 +4,7 @@ use App\Models\ClientesModel;
 
 class Crud extends BaseController
 {
-	public function index()
-	{
+	public function index(){
 		$CRUD = new ClientesModel();
 		$datos = $CRUD->listar();
 
@@ -18,6 +17,19 @@ class Crud extends BaseController
 
 		return view('clientes', $res);
 	}
+	
+	public function graficas(){
+		$CRUD = new ClientesModel();
+		$cantidad = $CRUD->getHombresMujeres();
+		$edad = $CRUD->getEdades();
+		$res = [
+			"cantidad" => $cantidad,
+			"edad" => $edad
+		];
+
+		return view('chartjs',$res);
+	}
+	
 
 	public function crear(){
 		$datos = [

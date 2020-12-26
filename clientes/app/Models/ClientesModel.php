@@ -37,4 +37,67 @@ class ClientesModel extends Model
 
         return $cliente->delete();
     }
+
+    public function getHombresMujeres(){
+        $hombres = $this->db->table('t_clientes')->where('genero','Masculino');
+        $numHombres = count($hombres->get()->getResult());
+
+        $mujeres = $this->db->table('t_clientes')->where('genero','Femenino');
+        $numMujeres = count($mujeres->get()->getResult());
+
+        $data = [
+            "hombres" => $numHombres,
+            "mujeres" => $numMujeres
+        ];
+
+        return $data;
+    }
+
+    public function getEdades(){
+        $edadHombres=[];
+        $edadMujeres=[];
+
+        $hombres = $this->db->table('t_clientes')->where('genero','Masculino')->where('edad >', '17')->where('edad <', '30');
+        $edadHombres[] = count($hombres->get()->getResult());
+
+        $mujeres = $this->db->table('t_clientes')->where('genero','Femenino')->where('edad >', '17')->where('edad <', '30');
+        $edadMujeres[] = count($mujeres->get()->getResult());
+
+        $hombres = $this->db->table('t_clientes')->where('genero','Masculino')->where('edad >', '29')->where('edad <', '40');
+        $edadHombres[] = count($hombres->get()->getResult());
+
+        $mujeres = $this->db->table('t_clientes')->where('genero','Femenino')->where('edad >', '29')->where('edad <', '40');
+        $edadMujeres[] = count($mujeres->get()->getResult());
+
+        $hombres = $this->db->table('t_clientes')->where('genero','Masculino')->where('edad >', '39')->where('edad <', '50');
+        $edadHombres[] = count($hombres->get()->getResult());
+
+        $mujeres = $this->db->table('t_clientes')->where('genero','Femenino')->where('edad >', '39')->where('edad <', '50');
+        $edadMujeres[] = count($mujeres->get()->getResult());
+
+        $hombres = $this->db->table('t_clientes')->where('genero','Masculino')->where('edad >', '49')->where('edad <', '60');
+        $edadHombres[] = count($hombres->get()->getResult());
+
+        $mujeres = $this->db->table('t_clientes')->where('genero','Femenino')->where('edad >', '49')->where('edad <', '60');
+        $edadMujeres[] = count($mujeres->get()->getResult());
+
+        $hombres = $this->db->table('t_clientes')->where('genero','Masculino')->where('edad >', '59')->where('edad <', '70');
+        $edadHombres[] = count($hombres->get()->getResult());
+
+        $mujeres = $this->db->table('t_clientes')->where('genero','Femenino')->where('edad >', '59')->where('edad <', '70');
+        $edadMujeres[] = count($mujeres->get()->getResult());
+
+        $hombres = $this->db->table('t_clientes')->where('genero','Masculino')->where('edad >=', '70');
+        $edadHombres[] = count($hombres->get()->getResult());
+
+        $mujeres = $this->db->table('t_clientes')->where('genero','Femenino')->where('edad >=', '70');
+        $edadMujeres[] = count($mujeres->get()->getResult());
+
+        $data = [
+            "hombres" => $edadHombres,
+            "mujeres" => $edadMujeres
+        ];
+
+        return $data;
+    }
 }
