@@ -5,7 +5,7 @@ Para ver proyecto en línea entrar a *http://millersteffens.com/*, tambien se pu
 
 
 
-Si el proyecto core de manera local con una maquina XAMPP, se puede accederá mediante la dirección *http://localhost/clientes/public/*.
+Si el proyecto corre de manera local con una maquina XAMPP, se puede acceder mediante la dirección *http://localhost/clientes/public/*.
 
 
 
