@@ -8,84 +8,142 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Crear</title>
   </head>
   <body>
   <div class="container">
   <h1>Crear cliente</h1>
-                <form class="form-horizontal needs-validation" method="POST" action="<?php echo base_url().'/crear'?>" novalidate>
+  <form id="validateForm" class="form-horizontal needs-validation" method="POST" action="<?php echo base_url().'/crear'?>" novalidate>
 
-                <div class="form-row">
-                    <label class="control-label" for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" required>
-                    <div class="invalid-feedback">Complete el campo</div>
+                <div class="form-group">
+                    <label class="control-label">Nombre</label>
+                    <input  id="nombre" name="nombre" placeholder="Nombre" class="form-control"  type="text">
                 </div>
 
-                <div class="form-row">
-                    <label class="control-label" for="apellido">Apellido</label>
-                    <input type="text" name="apellido" id="apellido" class="form-control" required>
-                    <div class="invalid-feedback">Complete el campo</div>
-                    
+                <div class="form-group">
+                    <label class="control-label">Apellido</label>
+                    <input  id="apellido" name="apellido" placeholder="Apellido" class="form-control"  type="text">
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label">Celular</label>
+                    <input id="celular" name="celular" placeholder="Celular" class="form-control" type="number">
                 </div>
 
-                <div class="form-row">
-                    <label class="control-label" for="celular">Celular</label>
-                    <input type="number" name="celular" id="celular" class="form-control" required>
-                    <div class="invalid-feedback">Complete el campo</div>
-                    
+                <div class="form-group">
+                    <label class="control-label">Correo</label>
+                    <input  id="correo" name="correo" placeholder="Correo" class="form-control"  type="text">
                 </div>
 
-                <div class="form-row">
-                    <label class="control-label" for="correo">Correo</label>
-                    <input type="text" name="correo" id="correo" class="form-control" required>
-                    <div class="invalid-feedback">Complete el campo</div>      
+                <div class="form-group">
+                    <label class="control-label">Edad</label>
+                    <input id="edad" name="edad" placeholder="Edad" class="form-control" type="number">
                 </div>
 
-                <div class="form-row">
-                    <label class="control-label" for="edad">Edad</label>
-                    <input type="number" name="edad" id="edad" class="form-control" required>
-                    <div class="invalid-feedback">Complete el campo</div>
-                </div>
-
-                <div class="form-row">
-                    <label class="control-label" for="genero">Genero</label>
+                <div class="form-group">
+                <label class="control-label" for="genero">Genero</label>
                     <select type="text" name="genero" id="genero" class="form-control" required>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                     </select>
-                    <div class="invalid-feedback">Complete el campo</div>
                 </div>
-                <br>
-					<button type= "submit" class="btn btn-primary">Guardar</button>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" >Guardar</button>
                     <a href="<?php echo base_url()?>" class="btn btn-success">Atras</a>
-                </form>
+                </div>
+
+        </form>         
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 
     <script type ="text/javascript">
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
+        $(document).ready(function(){
+            $('#validateForm').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                nombre: {
+                    validators: {
+                        stringLength: {
+                            min: 4,
+                            message: 'Su Nombre debe tener minimo 4 caracteres'
+                        },
+                        notEmpty: {
+                            message: 'Ingrese su Nombre'
+                        }
+                    }
+                },
+                apellido: {
+                    validators: {
+                        stringLength: {
+                            min: 4,
+                            message: 'Su Apellido debe tener minimo 4 caracteres'
+                        },
+                        notEmpty: {
+                            message: 'Ingrese su Apellido'
+                        }
+                    }
+                },
+                celular: {
+                    validators: {
+                        stringLength: {
+                            min: 10,
+                            message: 'Longitud minima 10'
+                        },
+                        numeric: {
+                            message: 'El celular debe ser un numero'
+                        },
+                        notEmpty: {
+                            message: 'Ingrese su numero de celular'
+                        }
+                    }
+                },
+                edad: {
+                    validators: {
+                        stringLength: {
+                            max: 3,
+                            message: 'Longitud minima 3'
+                        },
+                        numeric: {
+                            message: 'La Edad debe ser un numero'
+                        },
+                        notEmpty: {
+                            message: 'Ingrese su Edad'
+                        }
+                    }
+                },
+                genero: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Genero es una opcion requerida'
+                        }
+                    }
+                },
+                correo: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Ingrese su correo'
+                        },
+                        emailAddress: {
+                            message: 'Ingrese un correo valido'
+                        }
+                    }
+                }        
                 }
-                form.classList.add('was-validated');
-                }, false);
             });
-            }, false);
-        })();
+        });
+   
     </script>
+    
     
 
   </body>
