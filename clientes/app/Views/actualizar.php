@@ -103,7 +103,8 @@
                     validators: {
                         stringLength: {
                             min: 4,
-                            message: 'Su Apellido debe tener minimo 4 caracteres'
+                            max: 25,
+                            message: 'Ingrese un valor de entre 4 y 25 caracteres'
                         },
                         notEmpty: {
                             message: 'Ingrese su Apellido'
