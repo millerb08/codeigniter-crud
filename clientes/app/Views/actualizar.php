@@ -115,7 +115,8 @@
                     validators: {
                         stringLength: {
                             min: 10,
-                            message: 'Longitud minima 10'
+                            max: 15,
+                            message: 'Ingrese un valor de entre 10 y 15 caracteres'
                         },
                         numeric: {
                             message: 'El celular debe ser un numero'
