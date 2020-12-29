@@ -65,7 +65,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" >Submit</button>
+                    <button type="submit" class="btn btn-primary" >Actualizar</button>
                     <a href="<?php echo base_url()?>" class="btn btn-success">Atras</a>
                 </div>
             </form>
@@ -91,9 +91,10 @@
                     validators: {
                         stringLength: {
                             min: 4,
-                            message: 'Su Nombre debe tener minimo 4 caracteres'
+                            max: 25,
+                            message: 'Ingrese un valor de entre 4 y 25 caracteres'
                         },
-                        notEmpty: {
+                        Empty: {
                             message: 'Ingrese su Nombre'
                         }
                     }
